@@ -17,6 +17,12 @@ def manageiq_plugin(plugin_name)
   end
 end
 
+def h3nrique_plugin(plugin_name)
+  unless dependencies.detect { |d| d.name == plugin_name }
+    gem plugin_name, :git => "https://github.com/h3nrique/#{plugin_name}", :branch => "master"
+  end
+end
+
 manageiq_plugin "manageiq-providers-ansible_tower" # can't move this down yet, because we can't autoload ManageIQ::Providers::AnsibleTower::Shared
 manageiq_plugin "manageiq-schema"
 
@@ -131,6 +137,10 @@ end
 group :vmware, :manageiq_default do
   manageiq_plugin "manageiq-providers-vmware"
   gem "vmware_web_service",             "~>0.2.0"
+end
+
+group :oraclecloud, :manageiq_default do
+  h3nrique_plugin "manageiq-providers-oraclecloud"
 end
 
 ### shared dependencies
