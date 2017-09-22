@@ -139,9 +139,9 @@ group :vmware, :manageiq_default do
   gem "vmware_web_service",             "~>0.2.0"
 end
 
-group :oraclecloud, :manageiq_default do
-  h3nrique_plugin "manageiq-providers-oraclecloud"
-end
+#group :oraclecloud, :manageiq_default do
+#  h3nrique_plugin "manageiq-providers-oraclecloud"
+#end
 
 ### shared dependencies
 group :google, :openshift, :manageiq_default do
